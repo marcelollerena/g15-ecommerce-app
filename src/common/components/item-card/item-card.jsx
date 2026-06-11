@@ -2,9 +2,11 @@ import { Star } from "lucide-react";
 import { Button } from "../button/button";
 import styles from "./item-card.module.css";
 import { RoundNumber } from "../../utils/round-number";
+import { Link } from "react-router";
 
 export function ItemCard({ product }) {
   const {
+    id,
     title,
     price,
     description,
@@ -13,7 +15,11 @@ export function ItemCard({ product }) {
   } = product;
 
   return (
-    <div className={styles.container} style={{ justifySelf: "flex-end" }}>
+    <Link
+      to={`/product/${id}`}
+      className={styles.container}
+      style={{ justifySelf: "flex-end" }}
+    >
       <div className={styles.rate}>
         <Star style={{ fill: "oklch(85.2% 0.199 91.936)" }} />{" "}
         {RoundNumber(rate)}
@@ -26,6 +32,6 @@ export function ItemCard({ product }) {
       <Button>
         <p className={styles.price}>s/.{price}</p>
       </Button>
-    </div>
+    </Link>
   );
 }
