@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { useGetProductById } from "../../hooks/use-get-product-by-id";
 
 import styles from "./product.module.css";
-import { Star, User } from "lucide-react";
+import { Minus, Plus, Star, User } from "lucide-react";
 import { RoundNumber } from "../../../../common/utils/round-number";
 
 export function ProductPage() {
@@ -10,7 +10,9 @@ export function ProductPage() {
 
   const { product, loading, error } = useGetProductById({ productId: id });
 
-  console.log(product);
+  if (error) return <h1>{error}</h1>;
+
+  if (loading) return <h1>Loading...</h1>;
 
   const {
     image,
@@ -33,16 +35,24 @@ export function ProductPage() {
 
         <div className={styles.stats}>
           <span>
-            {/* {Array.from({ length: 5 }).map((_, index) => {
-              <Star
-                className={index <= RoundNumber(rate) && styles.fillStar}
-              />;
-            })} */}
+            {Array.from({ length: 5 }).map((_, index) => (
+              <Star className={index < RoundNumber(rate) && styles.fillStar} />
+            ))}
           </span>
 
           <span>
-            <User />: {count}+
+            <User /> {count}
           </span>
+        </div>
+
+        <div>
+          <button>
+            <Plus />
+          </button>
+          {0}
+          <button>
+            <Minus />
+          </button>
         </div>
       </div>
     </div>

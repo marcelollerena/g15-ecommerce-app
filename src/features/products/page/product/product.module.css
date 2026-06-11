@@ -39,3 +39,10 @@
 .fillStar {
   fill: oklch(85.2% 0.199 91.936);
 }
+
+.right_side {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
