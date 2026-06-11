@@ -1,5 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --stone-950: oklch(14.7% 0.004 49.25);
+  --neutral-950: oklch(26.9% 0 0);
+  --slate-100: oklch(96.8% 0.007 247.896);
 }
 
 body {

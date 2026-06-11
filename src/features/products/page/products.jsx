@@ -1,17 +1,22 @@
+import styles from "./products.module.css";
+
 import { useProducts } from "../hooks/use-products";
+import { ItemCard } from "../../../common/components/item-card/item-card";
 
 export function ProductsPage() {
   const { products, loading, error } = useProducts();
+
+  console.log(products);
 
   if (error) return <h1>{error}</h1>;
 
   if (loading) return <h1>Loading...</h1>;
 
-  return products.map((product) => (
-    <div>
-      <h3>{product.title}</h3>
-      <h5>{product.price}</h5>
-      <p>{product.description}</p>
+  return (
+    <div className={styles.container}>
+      {products.map((product) => (
+        <ItemCard product={product} />
+      ))}
     </div>
-  ));
+  );
 }
