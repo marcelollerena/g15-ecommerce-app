@@ -4,23 +4,29 @@ import { useGetProductById } from "../../hooks/use-get-product-by-id";
 import styles from "./product.module.css";
 import { Minus, Plus, Star, User } from "lucide-react";
 import { RoundNumber } from "../../../../common/utils/round-number";
+import { Button } from "../../../../common/components/button/button";
+import { useCartStore } from "../../store/use-cart-store";
 
 export function ProductPage() {
   const { id } = useParams();
 
   const { product, loading, error } = useGetProductById({ productId: id });
+  const { items, addItem, removeItem } = useCartStore();
 
   if (error) return <h1>{error}</h1>;
 
   if (loading) return <h1>Loading...</h1>;
 
   const {
+    price,
     image,
     title,
     description,
     category,
     rating: { rate, count },
   } = product;
+
+  const productQuantity = items.find((item) => item.id === product.id);
 
   return (
     <div className={styles.container}>
@@ -43,16 +49,18 @@ export function ProductPage() {
           <span>
             <User /> {count}
           </span>
+
+          <span>Price: S./ {price}</span>
         </div>
 
-        <div>
-          <button>
+        <div className={styles.controls}>
+          <Button callback={() => addItem(product)}>
             <Plus />
-          </button>
-          {0}
-          <button>
+          </Button>
+          {productQuantity ? productQuantity.quantity : 0}
+          <Button callback={() => removeItem(product.id)}>
             <Minus />
-          </button>
+          </Button>
         </div>
       </div>
     </div>

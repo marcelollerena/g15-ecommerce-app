@@ -4,6 +4,7 @@ import { Landing } from "../app/landing/landing";
 import { Products } from "../app/products/products";
 import { ShopLayout } from "../common/layouts/shop-layout";
 import { Product } from "../app/products/product";
+import { Checkout } from "../app/checkout/checkout";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "product/:id",
         Component: Product,
+      },
+      {
+        path: "checkout",
+        Component: Checkout,
       },
     ],
   },

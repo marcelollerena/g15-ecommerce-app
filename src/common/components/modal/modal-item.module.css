@@ -1,0 +1,34 @@
+.container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  justify-content: space-evenly;
+
+  font-size: 10px;
+
+  height: fit-content;
+}
+
+.container img {
+  width: 40px;
+  height: 50px;
+
+  border-radius: 16px;
+
+  object-fit: contain;
+}
+
+.container h4 {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+
+  width: 120px;
+  line-height: 10px;
+  max-height: 14px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

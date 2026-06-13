@@ -23,3 +23,7 @@
 .link:hover {
   transform: scale(1.05);
 }
+
+.link:nth-child(3):hover {
+  transform: scale(1);
+}

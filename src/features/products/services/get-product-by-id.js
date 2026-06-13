@@ -7,7 +7,5 @@ export const getProductById = async (productId) => {
     throw new Error(`Error getting the product with id ${productId}`);
   }
 
-  console.log(response);
-
   return response.json();
 };
